@@ -58,7 +58,7 @@ end
 
 ## todo
 - add functions
-- add local variable scoping functionality
+- add local scoping
 - add for-looping
 - add user input and output
 
