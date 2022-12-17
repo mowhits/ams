@@ -85,7 +85,7 @@ class process(parser):
     def __call__(self, tokens, pos):
         Result = self.parser(tokens, pos)
         if Result:
-            Result.val = self.function(result.val)
+            Result.val = self.function(Result.val)
             return Result
 
 class lazy(parser):
@@ -115,11 +115,11 @@ class exp(parser):
         Result = self.parser(tokens, pos)
         def process_next(parsed):
             (sepfunc, right) = parsed
-            return sepfunc(result.val, right)
+            return sepfunc(Result.val, right)
         next_parser = self.separator + self.parser ^ process_next
         next_result = Result
         while next_result:
-            next_result = next_parser(tokens, result.pos)
+            next_result = next_parser(tokens, Result.pos)
             if next_result:
                 Result = next_result
         return Result

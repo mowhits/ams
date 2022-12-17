@@ -3,7 +3,6 @@ import re
 
 def lex(chars, token_exprs):
     pos = 0
-    print(chars)
     tokens = []
     while pos < len(chars):
         match = None

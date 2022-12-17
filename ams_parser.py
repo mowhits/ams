@@ -23,7 +23,7 @@ def Artexp_group(): # parses grouped arithmetic expressions
     return keyword('(') + lazy(Artexp) + keyword(')') ^ process_group
 
 def Artexp_term(): # parses terms of expression
-    return Artexp_val | Artexp_group
+    return Artexp_val() | Artexp_group()
 
 def process_bin(operator): # combines expressions with arithmetic operator
     return lambda l, r: binartexp(l, operator, r)
@@ -39,7 +39,7 @@ def precedence(val_parser, precedence_levels, combine): # takes in terms, operat
     def operator_parser(precedence_level):
         return any_operator_in_list(precedence_level) ^ combine
     parser = val_parser * operator_parser(precedence_levels[0])
-    for precedence_level in precedence_level[1:]:
+    for precedence_level in precedence_levels[1:]:
         parser = parser * operator_parser(precedence_level)
     return parser
 
@@ -86,11 +86,12 @@ def assign_stat(): # parses assignment statements
     def Process(parsed):
         ((name, _), exp) = parsed
         return assignmentstat(name, exp)
+
     return ident + keyword(':=') + Artexp() ^ Process
 
 def stat_list(): # parses compound statements
     separator = keyword(';') ^ (lambda x: lambda l, r: compoundstat(l, r)) # using exp to avoid left recursion
-    return exp(stat(), separator)
+    return exp(statm(), separator)
 
 def if_stat(): # parses if statements
     def Process(parsed):
@@ -100,7 +101,7 @@ def if_stat(): # parses if statements
         else:
             false_stat = None
         return ifstat(condition, true_stat, false_stat)
-    return keyword('if') + Boolexp() + keyword(',') + lazy(stat_list) + opt(keyword('else') + lazy(stat_list)) + keyword('end') ^ process # optional else clause
+    return keyword('if') + Boolexp() + keyword(',') + lazy(stat_list) + opt(keyword('else') + lazy(stat_list)) + keyword('end') ^ Process # optional else clause
 
 def while_stat():
     def Process(parsed):
@@ -108,7 +109,7 @@ def while_stat():
         return whilestat(condition, body)
     return keyword('while') + Boolexp() + keyword(',') + lazy(stat_list) + keyword('end') ^ Process
 
-def stat():
+def statm():
     return assign_stat() | if_stat() | while_stat()
 
 # top level parser
@@ -119,5 +120,3 @@ def parser(): # parses entire program, ignores garbage tokens
 def ams_parse(tokens):
     ast = parser()(tokens, 0)
     return ast
-
-
