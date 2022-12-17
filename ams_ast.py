@@ -19,7 +19,8 @@ class varartexp(artexp): # variables
     def eval(self, env):
         if self.name in env:
             return env[self.name]
-
+        else:
+            return 0
 class binartexp(artexp): # binary operations
     def __init__(self, left, operator, right):
         self.left = left
@@ -111,13 +112,13 @@ class stat(equality):
     pass
 
 class assignmentstat(stat): # assignment statements
-    def __init__(self, name, artexp):
+    def __init__(self, name, Artexp):
         self.name = name
-        self.artexp = artexp
+        self.Artexp = Artexp
     def __repr__(self):
-        return f'assignmentstat({artexp})'
+        return f'assignmentstat({self.Artexp})'
     def eval(self, env):
-        val = self.Artexp.env(env)
+        val = self.Artexp.eval(env)
         env[self.name] = val
 
 class compoundstat(stat): # compound statements

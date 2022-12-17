@@ -5,8 +5,8 @@ INT = 'INT'
 IDENT = 'IDENT'
 
 token_exprs = [
-        (r'[ \n\t]+]', None),
-        (r'#[^\n]*', None), # ignores comments
+        (r'\s', None),
+        (r'#\w*', None), # ignores comments
         (r'\:=', RESERVED), # assignment operator
         (r'\(', RESERVED), # opening bracket
         (r'\)', RESERVED), # closing bracket
