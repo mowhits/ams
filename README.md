@@ -62,4 +62,5 @@ end
 - add local variable scoping functionality
 - add for-looping
 - add user input and output
+- better documentation
 
