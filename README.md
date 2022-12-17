@@ -57,8 +57,8 @@ end
 `python3 ams.py <filename>.ams`
 
 ## todo
-[] add functions
-[] add local variable scoping functionality
-[] add for-looping
-[] add user input and output
+- add functions
+- add local variable scoping functionality
+- add for-looping
+- add user input and output
 
