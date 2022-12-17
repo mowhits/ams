@@ -50,7 +50,8 @@ b := 0;
 while n > 0,
 c := a + b;
 a := b;
-b := c
+b := c;
+n := n - 1
 end
 ```
 ## execution
