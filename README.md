@@ -49,7 +49,7 @@ a := 1
 b := 0
 while n > 0,
 c := a + b;
-a := b
+a := b;
 b := c
 end
 ```
@@ -58,7 +58,7 @@ end
 
 ## todo
 - add functions
-- add local scoping
+- add local variable scoping functionality
 - add for-looping
 - add user input and output
 
