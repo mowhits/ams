@@ -35,8 +35,8 @@ y := 2
 
 ### computing a factorial:
 ```
-n := 5 # n!
-p := 1
+n := 5; # n!
+p := 1;
 while n > 0,
 p = p*n;
 n = n - 1
@@ -44,13 +44,14 @@ end
 ```
 ### computing the nth term of a fibonacci series:
 ```
-n := 5 # F_n
-a := 1
-b := 0
+n := 5; # F_n
+a := 1;
+b := 0;
 while n > 0,
 c := a + b;
 a := b;
-b := c
+b := c;
+n := n - 1
 end
 ```
 ## execution
@@ -61,4 +62,5 @@ end
 - add local variable scoping functionality
 - add for-looping
 - add user input and output
+- better documentation
 
