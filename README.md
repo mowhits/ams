@@ -1,13 +1,15 @@
+# ams
+a simple interpreter for my toy language ams, written in python
 
 ## structures: arithmetic expressions, boolean expressions, statements
-1. arithmetic expressions:
-  1. integer constants (`2`,`3`)
-  2. variables (`x`)
-  3. binary operations (`x - 2`)
-2. boolean expressions:
-  1. comparison expressions (`x > 1`)
-  2. logical expressions (`x && y`, `x || y`, `!x`)
-3. statements
+### arithmetic expressions:
+1. integer constants (`2`,`3`)
+2. variables (`x`)
+3. binary operations (`x - 2`)
+### boolean expressions:
+1. comparison expressions (`x > 1`)
+2. logical expressions (`x && y`, `x || y`, `!x`)
+### statements
   1. assignment statements: (all variables are global, and can only store integers)
 ```
 x := 1  
