@@ -5,7 +5,7 @@ def lex(chars, token_exprs):
     pos = 0
     tokens = []
     while pos < len(chars):
-        match = None
+        matching = None
         for token_expr in token_exprs:
             pattern, tag = token_expr
             regex = re.compile(pattern)
