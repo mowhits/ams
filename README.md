@@ -1,5 +1,5 @@
 # ams
-a simple interpreter for my toy language ams, written in python
+a very simple interpreter for my toy language ams, written in python
 
 ## structures: arithmetic expressions, boolean expressions, statements
 ### arithmetic expressions:
