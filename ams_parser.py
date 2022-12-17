@@ -46,10 +46,9 @@ def precedence(val_parser, precedence_levels, combine): # takes in terms, operat
 def Artexp(): # parses arithmetic expression with precedence
     return precedence(Artexp_term(), Artexp_precedence, process_bin)
 
-
 def process_rel(parsed): # combines expressions with relational operator
     ((left, operator), right) = parsed
-    return Relboolexp(left, operator, right)
+    return relboolexp(left, operator, right)
 
 # parsing logical and relational bool exps
 
