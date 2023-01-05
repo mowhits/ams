@@ -38,8 +38,8 @@ y := 2
 n := 5; # n!
 p := 1;
 while n > 0,
-p = p*n;
-n = n - 1
+p := p*n;
+n := n - 1
 end
 ```
 ### computing the nth term of a fibonacci series:
